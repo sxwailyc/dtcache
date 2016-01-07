@@ -4,7 +4,7 @@
 ----------------
 
 - [dtcache, a  local cache support data sync for distributed application](#dtcache-a-local-cache-support-data-sync-for-distributed-application)
-
+ - [example](#2-example)
 
 ##1. config the cache
 ```java
