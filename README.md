@@ -2,8 +2,8 @@
 
 
 ----------------
-[TOC]
 
+- [dtcache, a  local cache support data sync for distributed application](#dtcache-a-local-cache-support-data-sync-for-distributed-application)
 
 
 ##1. config the cache
