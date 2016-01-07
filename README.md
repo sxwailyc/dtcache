@@ -2,11 +2,15 @@
 
 
 ----------------
-[TOC]
 
+- [dtcache, a  local cache support data sync for distributed application](#dtcache-a-local-cache-support-data-sync-for-distributed-application)
+	- [config](#config)
+	- [example](#example)
+		- [write](#write)
+		- [read](#read)
+		- [delete](#delete)
 
-
-##1. config the cache
+##config the cache
 ```java
     	CacheItemListener cacheItemListener = new CacheItemListenerRedisImpl() {
 
@@ -25,9 +29,9 @@
         LocalCache.setConfig(config);
 ```
 
-##2. example
+##example
 
-###2.1  write 
+###write 
 
 ```java
 Cache cache = new Cache();
@@ -36,14 +40,14 @@ user.setUserId("userId");
 user.setUsername("username");
 cache.put(user.getUserId(), user);
 ```
-###2.2 read
+###read
 
 ```java
 Cache cache = new Cache();
 User user = cache.get("userId", User.class);
 ```
 
-###2.3 delete
+###delete
 
 ```java
 Cache cache = new Cache();
