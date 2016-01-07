@@ -34,7 +34,7 @@ public class LocalCache implements Cache {
 
 	private static boolean opened = false;
 
-	public static void setConfig(CacheConfig config) {
+	public static void start(CacheConfig config) {
 		_config = config;
 		init();
 	}
