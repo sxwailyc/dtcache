@@ -20,11 +20,11 @@ import org.naike.dtcache.util.StringUtil;
  * @author dw_shixiangwen
  * 
  */
-public class MemoryCache implements Cache {
+public class LocalCache implements Cache {
 
 	private static List<Map<String, CacheItem>> cacheList = null;
 
-	protected static Log logger = LogFactory.getLog(MemoryCache.class);
+	protected static Log logger = LogFactory.getLog(LocalCache.class);
 
 	private static CacheConfig _config = null;
 
