@@ -5,13 +5,15 @@ import org.naike.dtcache.core.CacheItem;
 /**
  * default expire strategy implement
  * 
- * @author dw_shixiangwen
- *
+ * @author shixiangwen03@gmail.com
+ * 
  */
 public class DefaultExpireStrategy implements ExpireStrategy {
 
 	/**
-	 * if the cache item is expired
+	 * default cache item expire strategy, the expire time is read times *
+	 * minute , max expire time is 60 minute, if the one cache item last read
+	 * time is more than expire time from now, it will be mark as expire
 	 * 
 	 * @param cacheItem
 	 * @return

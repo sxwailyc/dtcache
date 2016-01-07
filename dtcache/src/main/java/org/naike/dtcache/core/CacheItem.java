@@ -1,9 +1,25 @@
 package org.naike.dtcache.core;
 
+/**
+ * 
+ * @author shixiangwen03@gmail.com
+ * 
+ */
 public class CacheItem {
 
+	/**
+	 * the cache object
+	 */
 	private Object value;
+
+	/**
+	 * last read time
+	 */
 	private long cacheTime;
+
+	/**
+	 * read time
+	 */
 	private int read;
 
 	CacheItem(Object obj) {

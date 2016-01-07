@@ -53,8 +53,8 @@ public class LocalCache implements Cache {
 			return;
 		}
 		inited = true;
-		cacheList = new ArrayList<Map<String, CacheItem>>(_config.getPoolSize());
-		for (int i = 0; i < _config.getPoolSize(); i++) {
+		cacheList = new ArrayList<Map<String, CacheItem>>(_config.getHashSize());
+		for (int i = 0; i < _config.getHashSize(); i++) {
 			cacheList.add(i, null);
 		}
 
@@ -70,9 +70,12 @@ public class LocalCache implements Cache {
 			}
 		};
 
+		// start the cache clean daemo, it will remove the cache item from cache
+		// at regular time
 		cacheCleanDaemon.start();
 
 		if (_config.getCacheItemListener() != null) {
+
 			CacheSyncDaemon cacheSyncDaemon = new CacheSyncDaemon() {
 
 				@Override
@@ -87,6 +90,10 @@ public class LocalCache implements Cache {
 				}
 			};
 
+			// in one distributed application, if one cache server modify the
+			// cache item, we must let others cache server know that, and the
+			// cache sync daemon will do that for you. the only thing you need
+			// to do is implement the cache item listener
 			cacheSyncDaemon.start();
 		}
 
@@ -103,8 +110,17 @@ public class LocalCache implements Cache {
 
 	}
 
+	/*
+	 * close the cache server, if the cache server close, it will ignore all the
+	 * write, read request. and then, all the cache iten will be remove in 60
+	 * minute
+	 */
+	public static void close() {
+		opened = false;
+	}
+
 	private static Map<String, CacheItem> getCache(String id) {
-		long index = StringUtil.getHashCode(id) % _config.getPoolSize();
+		long index = StringUtil.getHashCode(id) % _config.getHashSize();
 		Map<String, CacheItem> cache = cacheList.get((int) index);
 		if (cache == null) {
 			cache = new ConcurrentHashMap<String, CacheItem>();
@@ -134,7 +150,10 @@ public class LocalCache implements Cache {
 	}
 
 	/**
-	 * delete obj from cache
+	 * delete object from cache
+	 * 
+	 * @param className
+	 * @param id
 	 */
 	public static void _delete(String className, String id) {
 		logger.debug("delete from cache.className:" + className + ",id:" + id);

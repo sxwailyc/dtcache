@@ -4,17 +4,27 @@ import org.naike.dtcache.listener.CacheItemListener;
 import org.naike.dtcache.strategy.DefaultExpireStrategy;
 import org.naike.dtcache.strategy.ExpireStrategy;
 
+/**
+ * cache config
+ * 
+ * @author shixiangwen03@gmail.com
+ * 
+ */
 public class CacheConfig {
 
+	/**
+	 * the expire strategy, if not config, it will use the @see
+	 * DefaultExpireStrategy
+	 */
 	private ExpireStrategy epireStrategy = null;
 
 	private CacheItemListener cacheItemListener = null;
 
-	private int poolSize;
+	private int hashSize;
 
 	private CacheConfig(Builder builder) {
 		this.epireStrategy = builder.getEpireStrategy();
-		this.poolSize = builder.getPoolSize();
+		this.hashSize = builder.getHashSize();
 		this.cacheItemListener = builder.getCacheItemListener();
 		if (epireStrategy == null) {
 			epireStrategy = new DefaultExpireStrategy();
@@ -25,8 +35,8 @@ public class CacheConfig {
 		return epireStrategy;
 	}
 
-	public int getPoolSize() {
-		return poolSize;
+	public int getHashSize() {
+		return hashSize;
 	}
 
 	public CacheItemListener getCacheItemListener() {
@@ -39,15 +49,15 @@ public class CacheConfig {
 
 		private CacheItemListener cacheItemListener;
 
-		private int poolSize = 128;
+		private int hashSize = 128;
 
 		public Builder epireStrategy(ExpireStrategy epireStrategy) {
 			this.epireStrategy = epireStrategy;
 			return this;
 		}
 
-		public Builder poolSize(int poolSize) {
-			this.poolSize = poolSize;
+		public Builder hashSize(int hashSize) {
+			this.hashSize = hashSize;
 			return this;
 		}
 
@@ -59,8 +69,8 @@ public class CacheConfig {
 			return epireStrategy;
 		}
 
-		public int getPoolSize() {
-			return poolSize;
+		public int getHashSize() {
+			return hashSize;
 		}
 
 		public CacheItemListener getCacheItemListener() {
