@@ -7,7 +7,7 @@
 	- [config](#config)
 	- [example](#example)
 		- [write](#write)
-		-[read](#read)
+		- [read](#read)
 		- [delete](#delete)
 
 ##config the cache
