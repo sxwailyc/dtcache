@@ -4,7 +4,7 @@
 ----------------
 
 - [dtcache, a  local cache support data sync for distributed application](#dtcache-a-local-cache-support-data-sync-for-distributed-application)
-  - [config](#config)
+- - [config](#config)
   - [example](#example)
    - [write](#write)
    - [read](#read)
