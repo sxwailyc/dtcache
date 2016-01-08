@@ -34,7 +34,7 @@
 ###write 
 
 ```java
-Cache cache = new Cache();
+Cache cache = new LocalCache();
 User user = new User();
 user.setUserId("userId");
 user.setUsername("username");
@@ -43,13 +43,13 @@ cache.put(user.getUserId(), user);
 ###read
 
 ```java
-Cache cache = new Cache();
+Cache cache = new LocalCache();
 User user = cache.get("userId", User.class);
 ```
 
 ###delete
 
 ```java
-Cache cache = new Cache();
+Cache cache = new LocalCache();
 cache.delete(User.class, "userId);
 ```
