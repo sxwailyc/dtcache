@@ -209,6 +209,9 @@ public class LocalCache implements Cache {
 		if (!check()) {
 			return null;
 		}
+		if (id == null || id.length() == 0) {
+			return null;
+		}
 		CacheItem item = getCache(id).get(getCacheKey(cls, id));
 		if (item != null) {
 			logger.debug(cls.getSimpleName() + " cahce hit with key:" + id);
@@ -221,5 +224,4 @@ public class LocalCache implements Cache {
 		}
 
 	}
-
 }

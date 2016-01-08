@@ -10,7 +10,7 @@
 		- [read](#read)
 		- [delete](#delete)
 
-##config the cache
+##config the cache(only need call once)
 ```java
     	CacheItemListener cacheItemListener = new CacheItemListenerRedisImpl() {
 
@@ -26,7 +26,7 @@
 		};
 
 		CacheConfig config = new CacheConfig.Builder().cacheItemListener(cacheItemListener).build();
-        LocalCache.setConfig(config);
+        LocalCache.start(config);
 ```
 
 ##example
