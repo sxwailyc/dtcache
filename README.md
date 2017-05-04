@@ -1,4 +1,4 @@
-#dtcache, a  local cache support data sync for distributed application
+# dtcache, a  local cache support data sync for distributed application
 
 
 ----------------
@@ -10,7 +10,7 @@
 		- [read](#read)
 		- [delete](#delete)
 
-#config the cache(only need call once)
+# config the cache(only need call once)
 ```java
     	CacheItemListener cacheItemListener = new CacheItemListenerRedisImpl() {
 
@@ -29,9 +29,9 @@
         LocalCache.start(config);
 ```
 
-#example
+# example
 
-##write 
+## write 
 
 ```java
 Cache cache = new LocalCache();
@@ -40,14 +40,14 @@ user.setUserId("userId");
 user.setUsername("username");
 cache.put(user.getUserId(), user);
 ```
-##read
+## read
 
 ```java
 Cache cache = new LocalCache();
 User user = cache.get("userId", User.class);
 ```
 
-##delete
+## delete
 
 ```java
 Cache cache = new LocalCache();
